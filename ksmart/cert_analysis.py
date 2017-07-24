@@ -41,11 +41,11 @@ def cert_info(app_dir, tools_dir):
 				elif file_name.lower().endswith(".dsa"):
 					certfile = os.path.join(cert, file_name)
 		if certfile:
-			args = [settings.JAVA_PATH + 'java', '-jar', cp_path, certfile]
+			args = [ 'java', '-jar', cp_path, certfile]
 			issued = 'good'
 			dat = subprocess.check_output(args)
 			unicode_output = unicode(dat, encoding="utf-8", errors="replace")
-			dat = escape(unicode_output).replace('\n', '</br>')
+			dat = unicode_output
 		else:
 			dat = 'No Code Signing Certificate Found!'
 			issued = 'missing'

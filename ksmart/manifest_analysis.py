@@ -1222,16 +1222,13 @@ def read_manifest(app_dir, tools_dir, typ, binary):
             print "[INFO] AXML -> XML"
             manifest = os.path.join(app_dir, "AndroidManifest.xml")
             cp_path = os.path.join(tools_dir, 'AXMLPrinter2.jar')
-
             args = ['java', '-jar', cp_path, manifest]
-            print args 
             dat = subprocess.check_output(args)
         else:
             print "[INFO] Getting Manifest from Source"
             if typ == "eclipse":
                 manifest = os.path.join(app_dir, "AndroidManifest.xml")
             elif typ == "studio":
-
                 manifest = os.path.join(
                     app_dir, "app/src/main/AndroidManifest.xml"
                 )
