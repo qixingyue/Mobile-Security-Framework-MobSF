@@ -2,7 +2,7 @@
 """Holds the different winfixes."""
 
 import os
-from util import printException
+from util import PrintException
 
 def win_fix_java(tools_dir):
     """Runn JAVA path fix in Windows"""

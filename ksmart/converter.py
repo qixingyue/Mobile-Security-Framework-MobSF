@@ -4,6 +4,9 @@
 import platform
 import subprocess
 import os
+import settings
+
+from util import PrintException
 
 from win_fixes import ( win_fix_python3, win_fix_java)
 
@@ -78,7 +81,7 @@ def dex_2_smali(app_dir, tools_dir):
             bs_path = os.path.join(tools_dir, 'baksmali.jar')
         output = os.path.join(app_dir, 'smali_source/')
         args = [
-            settings.JAVA_PATH + 'java',
+            'java',
             '-jar', bs_path, dex_path, '-o', output
         ]
         subprocess.call(args)
@@ -100,7 +103,7 @@ def jar_2_java(app_dir, tools_dir):
                 jd_path = settings.JD_CORE_DECOMPILER_BINARY
             else:
                 jd_path = os.path.join(tools_dir, 'jd-core.jar')
-            args = [settings.JAVA_PATH + 'java',
+            args = ['java',
                     '-jar', jd_path, jar_path, output]
         elif settings.DECOMPILER == 'cfr':
             if (
@@ -124,5 +127,6 @@ def jar_2_java(app_dir, tools_dir):
             args = [settings.JAVA_PATH + 'java',
                     '-jar', pd_path, jar_path, '-o', output]
         subprocess.call(args)
-    except:
+    except Exception,e:
+        print e
         PrintException("[ERROR] Converting JAR to JAVA")

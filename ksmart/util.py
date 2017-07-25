@@ -4,10 +4,9 @@ import hashlib
 import os
 import zipfile
 
-def PrintException(message):
-	print "---------------------------%s"  % (message)
+def PrintException(message,ex = ""):
+	print "%s \n ex : \n %s\n"  % (message,ex)
 	print "BAD"
-	exit()
 
 def wind_file(root):
 	for parent,dirnames,filenames in os.walk(root): 
@@ -62,3 +61,6 @@ def Unzip(apkfile, extractpath):
 		exit()
 
 		
+
+def escape(text):
+	return text
